@@ -2,12 +2,17 @@
 
 import { Button } from '@/components/ui/Button'
 import html2canvas from 'html2canvas'
+import { useParams } from 'next/navigation'
+import { locales } from '@/config/i18n'
 
 interface ImageExporterProps {
   previewRef: React.RefObject<HTMLDivElement>
 }
 
 export const ImageExporter = ({ previewRef }: ImageExporterProps) => {
+  const { lang } = useParams()
+  const t = locales[lang as keyof typeof locales]
+
   const exportAsImage = async () => {
     if (previewRef.current) {
       try {
@@ -19,14 +24,14 @@ export const ImageExporter = ({ previewRef }: ImageExporterProps) => {
         link.href = url
         link.click()
       } catch (error) {
-        console.error('导出图片失败:', error)
+        console.error('Export failed:', error)
       }
     }
   }
 
   return (
     <Button onClick={exportAsImage}>
-      导出为图片
+      {t.home.exportButton}
     </Button>
   )
 } 

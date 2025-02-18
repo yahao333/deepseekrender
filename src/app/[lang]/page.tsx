@@ -5,20 +5,25 @@ import { Container } from "@/components/ui/Container"
 import { MarkdownRenderer } from "@/components/MarkdownRenderer"
 import { ImageExporter } from "@/components/ImageExporter"
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/Resizable"
+import { locales } from "@/config/i18n"
 
-const defaultMarkdown = `# DeepSeekRender
+interface HomeProps {
+  params: { lang: string }
+}
 
-一个现代化的渲染引擎，支持 Markdown 渲染和图片导出。
+export default function Home({ params: { lang } }: HomeProps) {
+  const t = locales[lang as keyof typeof locales]
+  const defaultMarkdown = `# ${t.app.title}
 
-## 特性
+${t.app.description}
 
-- ✨ Markdown 实时渲染
-- 🖼️ 图片导出功能
-- 🌓 深色模式支持
-- 📱 响应式设计
+## ${t.home.features}
+
+- ✨ ${t.home.markdownRender}
+- 🖼️ ${t.home.imageExport}
+- 🌓 ${t.home.darkMode}
+- 📱 ${t.home.responsive}
 `
-
-export default function Home() {
   const [content, setContent] = useState(defaultMarkdown)
   const previewRef = useRef<HTMLDivElement>(null)
 
@@ -35,7 +40,7 @@ export default function Home() {
               value={content}
               onChange={(e) => setContent(e.target.value)}
               className="w-full h-full resize-none rounded-md border-0 bg-transparent p-2 font-mono text-sm focus:ring-0"
-              placeholder="在此输入 Markdown 内容..."
+              placeholder={t.home.inputPlaceholder}
             />
           </div>
         </ResizablePanel>
@@ -50,4 +55,4 @@ export default function Home() {
       </ResizablePanelGroup>
     </Container>
   )
-}
+} 
