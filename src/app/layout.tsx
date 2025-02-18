@@ -22,11 +22,11 @@ export const metadata = {
   ],
   authors: [
     {
-      name: "Your Name",
-      url: "https://your-website.com",
+      name: "Jax",
+      url: "mailto:fexeak@outlook.com",
     },
   ],
-  creator: "Your Name",
+  creator: "Jax",
 }
 
 export default function RootLayout({

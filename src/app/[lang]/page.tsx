@@ -53,6 +53,12 @@ ${t.app.description}
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>
+
+      <footer className="mt-8 text-center text-sm text-muted-foreground">
+        <p>
+          Contact: <a href="mailto:fexeak@outlook.com" className="hover:underline">Jax (fexeak@outlook.com)</a>
+        </p>
+      </footer>
     </Container>
   )
 } 
