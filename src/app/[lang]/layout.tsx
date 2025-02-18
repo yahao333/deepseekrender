@@ -10,15 +10,18 @@ export async function generateStaticParams() {
   return Object.keys(languages).map((lang) => ({ lang }))
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params,
 }: {
   children: React.ReactNode
-  params: { lang: string }
+  params: Promise<{ lang: string }>
 }) {
+  const { lang = 'en' } = await params
+  const htmlLang = languages[lang as keyof typeof languages]?.code || 'en-US'
+
   return (
-    <html lang={languages[params.lang as keyof typeof languages].code} suppressHydrationWarning>
+    <html lang={htmlLang} suppressHydrationWarning>
       <body className={cn(
         "min-h-screen bg-background font-sans antialiased",
         inter.className
