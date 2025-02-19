@@ -30,7 +30,7 @@ ${t.app.description}
     if (previewRef.current) {
       setIsPreviewReady(true)
     }
-  }, [previewRef.current])
+  }, [])
 
   return (
     <>

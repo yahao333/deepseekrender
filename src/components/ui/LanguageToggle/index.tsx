@@ -15,6 +15,7 @@ export const LanguageToggle = () => {
   const router = useRouter()
   const pathname = usePathname()
   const currentLang = pathname ? pathname.split('/')[1] : 'en'
+  const language = languages[currentLang as keyof typeof languages] || languages['en']
   const [open, setOpen] = useState(false)
 
   const switchLanguage = (lang: string) => {
@@ -27,7 +28,7 @@ export const LanguageToggle = () => {
     <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="sm">
-          {languages[currentLang as keyof typeof languages].name}
+          {language.name}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
