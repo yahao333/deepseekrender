@@ -33,6 +33,9 @@ ${t.app.description}
   const [shadowSize, setShadowSize] = useState(4); // 阴影大小
   const [borderRadius, setBorderRadius] = useState(8); // 圆角大小
 
+  // 新增控制：渲染区域宽高
+  const [renderWidth, setRenderWidth] = useState(500)  
+
   useEffect(() => {
     if (previewRef.current) {
       setIsPreviewReady(true)
@@ -65,44 +68,104 @@ ${t.app.description}
         <ResizableHandle />
         
         <ResizablePanel defaultSize={50}>
-          {/* 让预览区背景稍微有点区别，可选。也可以去掉 bg-gray-50 */}
-          <div className="relative h-full overflow-hidden flex items-center"> {/* 使用 flex 布局 */}
+          {/* 让右侧可滚动，方便调试时不至于被截断 */}
+          <div className="h-full overflow-auto flex justify-center items-center">
+            {/* 固定尺寸容器，超出隐藏，留白效果 */}
             <div
-              className="absolute inset-0"
-              style={{ background: `linear-gradient(to bottom, ${startColor}, ${endColor})` }} // 动态渐变背景
-            />
-            <div
-              ref={previewRef}
-              className="relative z-10 bg-white rounded-lg p-6 mx-4" // 前景，设置 padding 和 margin
-              style={{ backgroundColor: bgColor, borderRadius: `${borderRadius}px`, boxShadow: `0 0 ${shadowSize}px rgba(0, 0, 0, 0.5)` }} // 应用控制参数
+              className="relative"
+              style={{
+                width: renderWidth,
+                height: '100%',
+                overflow: 'hidden', // 超出隐藏
+              }}
             >
-              <MarkdownRenderer content={content} />
+              {/* 背景层：线性渐变 */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background: `linear-gradient(to bottom, ${startColor}, ${endColor})`,
+                }}
+              />
+              {/* 前景卡片层 */}
+              <div
+                ref={previewRef}
+                className="relative z-10"
+                style={{
+                  backgroundColor: bgColor,
+                  borderRadius: `${borderRadius}px`,
+                  boxShadow: `0 0 ${shadowSize}px rgba(0, 0, 0, 0.5)`,
+                  margin: 20,   // 让卡片四周留出间距
+                  padding: 20,  // 卡片内边距
+                  width: `calc(100% - 40px)`,  // 减去 margin
+                  height: `calc(100% - 40px)`, // 减去 margin
+                  overflow: 'auto',
+                }}
+              >
+                <MarkdownRenderer content={content} />
+              </div>
             </div>
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>
 
-      {/* 控制参数区域 */}
-      <div className="mt-4 p-4 border rounded-lg shadow-md">
+          {/* 控制参数区域 */}
+          <div className="mt-4 p-4 border rounded-lg shadow-md space-x-4">
+        <label>
+          渲染宽度:
+          <input
+            type="number"
+            value={renderWidth}
+            onChange={(e) => setRenderWidth(Number(e.target.value))}
+            min="100"
+            className="ml-1 w-16"
+          />
+        </label>
         <label>
           渐变起始颜色:
-          <input type="color" value={startColor} onChange={(e) => setStartColor(e.target.value)} />
+          <input
+            type="color"
+            value={startColor}
+            onChange={(e) => setStartColor(e.target.value)}
+            className="ml-1"
+          />
         </label>
-        <label className="ml-4">
+        <label>
           渐变结束颜色:
-          <input type="color" value={endColor} onChange={(e) => setEndColor(e.target.value)} />
+          <input
+            type="color"
+            value={endColor}
+            onChange={(e) => setEndColor(e.target.value)}
+            className="ml-1"
+          />
         </label>
-        <label className="ml-4">
+        <label>
           前景颜色:
-          <input type="color" value={bgColor} onChange={(e) => setBgColor(e.target.value)} />
+          <input
+            type="color"
+            value={bgColor}
+            onChange={(e) => setBgColor(e.target.value)}
+            className="ml-1"
+          />
         </label>
-        <label className="ml-4">
+        <label>
           阴影大小:
-          <input type="number" value={shadowSize} onChange={(e) => setShadowSize(Number(e.target.value))} min="0" />
+          <input
+            type="number"
+            value={shadowSize}
+            onChange={(e) => setShadowSize(Number(e.target.value))}
+            min="0"
+            className="ml-1 w-16"
+          />
         </label>
-        <label className="ml-4">
+        <label>
           圆角大小:
-          <input type="number" value={borderRadius} onChange={(e) => setBorderRadius(Number(e.target.value))} min="0" />
+          <input
+            type="number"
+            value={borderRadius}
+            onChange={(e) => setBorderRadius(Number(e.target.value))}
+            min="0"
+            className="ml-1 w-16"
+          />
         </label>
       </div>
     </>
