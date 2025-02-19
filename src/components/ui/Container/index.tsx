@@ -1,6 +1,8 @@
 import { cn } from "@/lib/utils"
 
-interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
+}
 
 export const Container = ({ className, ...props }: ContainerProps) => {
   return (
