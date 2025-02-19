@@ -48,7 +48,7 @@ ${t.app.description}
         {isPreviewReady ? (
           <ImageExporter previewRef={previewRef as React.RefObject<HTMLDivElement>} />
         ) : (
-          <p>预览区域未准备好</p>
+          <p>{t.preview.notReady}</p> // 使用翻译
         )}
       </div>
       
@@ -111,17 +111,17 @@ ${t.app.description}
           {/* 控制参数区域 */}
           <div className="mt-4 p-4 border rounded-lg shadow-md space-x-4">
         <label>
-          渲染宽度:
+          {t.controls.renderWidth}:
           <input
             type="number"
             value={renderWidth}
             onChange={(e) => setRenderWidth(Number(e.target.value))}
             min="100"
-            className="ml-1 w-16"
+            className="ml-1 w-12"
           />
         </label>
         <label>
-          渐变起始颜色:
+          {t.controls.gradientStartColor}:
           <input
             type="color"
             value={startColor}
@@ -130,7 +130,7 @@ ${t.app.description}
           />
         </label>
         <label>
-          渐变结束颜色:
+          {t.controls.gradientEndColor}:
           <input
             type="color"
             value={endColor}
@@ -139,7 +139,7 @@ ${t.app.description}
           />
         </label>
         <label>
-          前景颜色:
+          {t.controls.foregroundColor}:
           <input
             type="color"
             value={bgColor}
@@ -148,23 +148,23 @@ ${t.app.description}
           />
         </label>
         <label>
-          阴影大小:
+          {t.controls.shadowSize}:
           <input
             type="number"
             value={shadowSize}
             onChange={(e) => setShadowSize(Number(e.target.value))}
             min="0"
-            className="ml-1 w-16"
+            className="ml-1 w-12"
           />
         </label>
         <label>
-          圆角大小:
+          {t.controls.borderRadius}:
           <input
             type="number"
             value={borderRadius}
             onChange={(e) => setBorderRadius(Number(e.target.value))}
             min="0"
-            className="ml-1 w-16"
+            className="ml-1 w-12"
           />
         </label>
       </div>

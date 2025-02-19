@@ -36,6 +36,17 @@ export const locales = {
       inputPlaceholder: 'Enter Markdown content here...',
       exportButton: 'Export as Image',
     },
+    controls: {
+      gradientStartColor: 'Gradient Start Color',
+      gradientEndColor: 'Gradient End Color',
+      foregroundColor: 'Foreground Color',
+      shadowSize: 'Shadow Size',
+      borderRadius: 'Border Radius',
+      renderWidth: 'Render Width',
+    },
+    preview: {
+      notReady: 'Preview area is not ready',
+    },    
   },
   zh: {
     app: {
@@ -55,6 +66,17 @@ export const locales = {
       inputPlaceholder: '在此输入 Markdown 内容...',
       exportButton: '导出为图片',
     },
+    controls: {
+      gradientStartColor: '渐变起始颜色',
+      gradientEndColor: '渐变结束颜色',
+      foregroundColor: '前景颜色',
+      shadowSize: '阴影大小',
+      borderRadius: '圆角大小',
+      renderWidth: '渲染宽度',
+    },
+    preview: {
+      notReady: '预览区域未准备好',
+    },    
   },
   ja: {
     app: {
@@ -74,5 +96,16 @@ export const locales = {
       inputPlaceholder: 'Markdown コンテンツを入力してください...',
       exportButton: '画像として保存',
     },
+    controls: {
+      gradientStartColor: 'グラデーションの開始色',
+      gradientEndColor: 'グラデーションの終了色',
+      foregroundColor: '前景色',
+      shadowSize: '影のサイズ',
+      borderRadius: '角の半径',
+      renderWidth: 'レンダリング幅',
+    },
+    preview: {
+      notReady: 'プレビューエリアは準備ができていません',
+    },    
   },
 } 
