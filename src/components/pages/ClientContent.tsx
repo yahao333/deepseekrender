@@ -28,8 +28,8 @@ ${t.app.description}
   
   // 控制参数
   const [bgColor, setBgColor] = useState('#ffffff'); // 前景颜色
-  const [startColor, setStartColor] = useState('#3b82f6'); // 渐变起始颜色
-  const [endColor, setEndColor] = useState('#9333ea'); // 渐变结束颜色
+  const [startColor, setStartColor] = useState('#74d6c7'); // 渐变起始颜色
+  const [endColor, setEndColor] = useState('#5e9bf4'); // 渐变结束颜色
   const [shadowSize, setShadowSize] = useState(4); // 阴影大小
   const [borderRadius, setBorderRadius] = useState(8); // 圆角大小
 
