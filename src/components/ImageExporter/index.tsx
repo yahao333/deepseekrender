@@ -10,9 +10,12 @@ interface ImageExporterProps {
 }
 
 export const ImageExporter = ({ previewRef }: ImageExporterProps) => {
+  console.log(locales); // 在 ImageExporter 组件中添加此行以检查 locales 的内容
+  
   const params = useParams<{ lang?: string }>();
   const lang = params ? params.lang : 'en'; // 如果 params 为 null，则使用默认值 'en'
-  const t = locales[lang as keyof typeof locales]
+  const t = locales[lang as keyof typeof locales] || locales['en']; // 确保 t 有一个默认值
+  console.log(t.home.exportButton); // 调试信息
 
   const exportAsImage = async () => {
     if (previewRef.current) {

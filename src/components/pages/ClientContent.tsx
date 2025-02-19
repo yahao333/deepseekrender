@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { MarkdownRenderer } from "@/components/MarkdownRenderer"
 import { ImageExporter } from "@/components/ImageExporter"
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/Resizable"
@@ -24,11 +24,22 @@ ${t.app.description}
 `
   const [content, setContent] = useState(defaultMarkdown)
   const previewRef = useRef<HTMLDivElement>(null)
+  const [isPreviewReady, setIsPreviewReady] = useState(false)
+
+  useEffect(() => {
+    if (previewRef.current) {
+      setIsPreviewReady(true)
+    }
+  }, [previewRef.current])
 
   return (
     <>
       <div className="flex justify-end mb-4">
-      {previewRef.current && <ImageExporter previewRef={previewRef as React.RefObject<HTMLDivElement>} />}
+        {isPreviewReady ? (
+          <ImageExporter previewRef={previewRef as React.RefObject<HTMLDivElement>} />
+        ) : (
+          <p>预览区域未准备好</p>
+        )}
       </div>
       
       <ResizablePanelGroup direction="horizontal" className="min-h-[600px] rounded-lg border">
