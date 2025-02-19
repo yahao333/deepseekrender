@@ -6,11 +6,11 @@ import { useParams } from 'next/navigation'
 import { locales } from '@/config/i18n'
 
 interface ImageExporterProps {
-  previewRef: React.RefObject<HTMLDivElement | null>
+  previewRef: React.RefObject<HTMLDivElement>
 }
 
 export const ImageExporter = ({ previewRef }: ImageExporterProps) => {
-  const { lang } = useParams()
+  const { lang = 'en' } = useParams<{ lang?: string }>();
   const t = locales[lang as keyof typeof locales]
 
   const exportAsImage = async () => {

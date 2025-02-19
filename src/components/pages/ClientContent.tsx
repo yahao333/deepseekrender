@@ -28,7 +28,7 @@ ${t.app.description}
   return (
     <>
       <div className="flex justify-end mb-4">
-        <ImageExporter previewRef={previewRef} />
+      {previewRef.current && <ImageExporter previewRef={previewRef as React.RefObject<HTMLDivElement>} />}
       </div>
       
       <ResizablePanelGroup direction="horizontal" className="min-h-[600px] rounded-lg border">
