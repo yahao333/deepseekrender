@@ -10,7 +10,8 @@ interface ImageExporterProps {
 }
 
 export const ImageExporter = ({ previewRef }: ImageExporterProps) => {
-  const { lang = 'en' } = useParams<{ lang?: string }>();
+  const params = useParams<{ lang?: string }>();
+  const lang = params ? params.lang : 'en'; // 如果 params 为 null，则使用默认值 'en'
   const t = locales[lang as keyof typeof locales]
 
   const exportAsImage = async () => {
