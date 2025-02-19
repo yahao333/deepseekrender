@@ -6,7 +6,7 @@ import { useParams } from 'next/navigation'
 import { locales } from '@/config/i18n'
 
 interface ImageExporterProps {
-  previewRef: React.RefObject<HTMLDivElement>
+  previewRef: React.RefObject<HTMLDivElement | null>
 }
 
 export const ImageExporter = ({ previewRef }: ImageExporterProps) => {
