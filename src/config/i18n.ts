@@ -15,6 +15,8 @@ export const languages = {
 
 export const defaultLocale = 'en'
 
+export const BASE_URL = 'https://deepseekrender.top'
+
 export const locales = {
   en: {
     app: {
