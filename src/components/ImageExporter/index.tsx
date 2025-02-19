@@ -20,15 +20,15 @@ export const ImageExporter = ({ previewRef }: ImageExporterProps) => {
   const exportAsImage = async () => {
     if (previewRef.current) {
       try {
-        const canvas = await html2canvas(previewRef.current)
-        const url = canvas.toDataURL('image/png')
+        const canvas = await html2canvas(previewRef.current.parentElement!);
+        const url = canvas.toDataURL('image/png');
         
-        const link = document.createElement('a')
-        link.download = 'markdown-preview.png'
-        link.href = url
-        link.click()
+        const link = document.createElement('a');
+        link.download = 'markdown-preview.png';
+        link.href = url;
+        link.click();
       } catch (error) {
-        console.error('Export failed:', error)
+        console.error('Export failed:', error);
       }
     }
   }
