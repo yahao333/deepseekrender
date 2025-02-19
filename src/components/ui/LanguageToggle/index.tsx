@@ -14,11 +14,11 @@ import {
 export const LanguageToggle = () => {
   const router = useRouter()
   const pathname = usePathname()
-  const currentLang = pathname.split('/')[1] || 'zh'
+  const currentLang = pathname ? pathname.split('/')[1] : 'en'
   const [open, setOpen] = useState(false)
 
   const switchLanguage = (lang: string) => {
-    const newPath = pathname.replace(`/${currentLang}`, '').replace(/^\//, '')
+    const newPath = pathname ? pathname.replace(`/${currentLang}`, '').replace(/^\//, '') : '';
     router.push(`/${lang}/${newPath}`)
     setOpen(false)
   }
