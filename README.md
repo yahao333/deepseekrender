@@ -1,109 +1,82 @@
 # DeepSeekRender 🚀
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yanghao/deepseekrender)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yahao333/deepseekrender)
 
-**DeepSeekRender** 是一个基于 Next.js 的现代化渲染引擎，专注于高效、可扩展的 Web 应用开发。通过结合 Cloudflare 的全球 CDN 和 Vercel 的无服务器部署，提供极致的性能和用户体验。
+**DeepSeekRender** is a modern rendering engine based on Next.js, focusing on efficient and scalable web application development. By combining Cloudflare's global CDN and Vercel's serverless deployment, it provides exceptional performance and user experience.
 
-## 功能特性 ✨
+## Features ✨
 
-- **多种渲染模式**：支持静态生成（SSG）、服务器端渲染（SSR）和增量静态再生（ISR）。
-- **高性能**：通过 Cloudflare CDN 加速全球访问。
-- **无缝部署**：使用 Vercel 实现自动化部署和 CI/CD。
-- **现代化技术栈**：基于 Next.js、React 和 Tailwind CSS。
-- **SEO 友好**：自动生成优化的元标签和结构化数据。
+- **Multiple Rendering Modes**: Supports Static Site Generation (SSG), Server-Side Rendering (SSR), and Incremental Static Regeneration (ISR).
+- **High Performance**: Accelerated global access through Cloudflare CDN.
+- **Seamless Deployment**: Automated deployment and CI/CD using Vercel.
+- **Modern Tech Stack**: Built with Next.js, React, and Tailwind CSS.
+- **SEO Friendly**: Automatically generates optimized meta tags and structured data.
 
-## 快速开始 🚀
+## Getting Started 🚀
 
-### 1. 环境要求
+### 1. Requirements
 
-- Node.js 18.0 或更高版本
-- npm 或 yarn 包管理器
+- Node.js 18.0 or higher
+- npm or yarn package manager
 
-### 2. 克隆仓库
+### 2. Clone the Repository
 
 ```bash
 git clone https://github.com/yahao333/deepseekrender.git
 cd deepseekrender
 ```
 
-### 3. 安装依赖
+### 3. Install Dependencies
 
 ```bash
 npm install
-# 或者使用 yarn
+# or use yarn
 yarn install
 ```
 
-### 4. 开发环境运行
+### 4. Run Development Environment
 
 ```bash
 npm run dev
-# 或者使用 yarn
+# or use yarn
 yarn dev
 ```
 
-### 5. 构建生产版本
+### 5. Build for Production
 
 ```bash
 npm run build
 npm run start
-# 或者使用 yarn
+# or use yarn
 yarn build
 yarn start
 ```
 
-## 项目结构 📁
+## Project Structure 📁
 
 ```
 deepseekrender/
-├── app/                 # Next.js 14 应用目录
-│   ├── layout.tsx      # 根布局组件
-│   ├── page.tsx        # 首页组件
+├── app/                 # Next.js 14 application directory
+│   ├── layout.tsx      # Root layout component
+│   ├── page.tsx        # Home page component
 │   └── ...
-├── components/         # 可复用组件
-├── public/            # 静态资源
-├── styles/           # 全局样式
-└── types/            # TypeScript 类型定义
+├── components/         # Reusable components
+├── public/            # Static assets
+├── styles/           # Global styles
+└── types/            # TypeScript type definitions
 ```
 
-## 开发指南 📖
+## Development Guide 📖
 
-1. **页面创建**：
-   - 在 `app` 目录下创建新的目录即可自动生成路由
-   - 使用 `page.tsx` 作为页面入口文件
+1. **Creating Pages**:
+   - Create a new directory under the `app` directory to automatically generate routes.
+   - Use `page.tsx` as the entry file for the page.
 
-2. **组件开发**：
-   - 默认使用服务器组件（Server Components）
-   - 需要客户端交互时，添加 'use client' 指令
+## Contributing 🤝
 
-3. **样式编写**：
-   - 使用 Tailwind CSS 进行样式开发
-   - 可在 `styles` 目录下扩展全局样式
+We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING.md) for more information.
 
-## 部署说明 🌐
+## License 📄
 
-1. **Vercel 部署**：
-   - fork 本仓库
-   - 在 Vercel 中导入项目
-   - 自动完成部署
-
-2. **自定义部署**：
-   - 构建项目：`npm run build`
-   - 启动服务：`npm run start`
-
-## 贡献指南 🤝
-
-欢迎提交 Pull Request 或创建 Issue！
-
-## 许可证 📄
-
-本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
-
-## 主页功能
-
-- 首页
-- 文档
-
-首页，实现渲染markdown文档，并实现图片导出
-文档，介绍当前网站功能
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
