@@ -4,6 +4,7 @@ import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Header } from "@/components/layout/Header"
 import { ThemeProvider } from "@/components/providers/ThemeProvider"
+import Script from 'next/script'
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -40,6 +41,21 @@ export default function RootLayout({
         "min-h-screen bg-background font-sans antialiased",
         inter.className
       )}>
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-GKT18HKXT9"
+        />
+        <Script id="google-analytics-init">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-GKT18HKXT9');
+          `}
+        </Script>
+
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
