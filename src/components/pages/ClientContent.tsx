@@ -34,7 +34,7 @@ ${t.app.description}
   const [borderRadius, setBorderRadius] = useState(8); // 圆角大小
 
   // 新增控制：渲染区域宽高
-  const [renderWidth, setRenderWidth] = useState(500)  
+  const [renderWidth, setRenderWidth] = useState(800)  
 
   useEffect(() => {
     if (previewRef.current) {
