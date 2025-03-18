@@ -28,6 +28,22 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
           margin-right: 0.5em;
           flex-shrink: 0;
         }
+        
+        /* 修复无序列表项目符号和文本的对齐问题 */
+        .markdown-custom-styles ul {
+          list-style-type: none;
+          padding-left: 0;
+        }
+        .markdown-custom-styles ul li {
+          display: flex;
+          align-items: flex-start;
+        }
+        .markdown-custom-styles ul li::before {
+          content: "•";
+          font-weight: bold;
+          margin-right: 0.5em;
+          flex-shrink: 0;
+        }
       `}</style>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
