@@ -49,7 +49,11 @@ export const locales = {
       notReady: 'Preview area is not ready',
     },
     common: {
-      visitProject: 'Visit Project'
+      visitProject: 'Visit Project',
+      viewOnGitHub: 'View on GitHub',
+      followOnX: 'Follow me on X',
+      moreProjects: 'View More Projects',
+      toggleTheme: 'Toggle Theme'
     },
     projects: {
       deepseekChat: 'Generate DeepSeek-style Chat Records',
@@ -88,7 +92,11 @@ export const locales = {
       notReady: '预览区域未准备好',
     },
     common: {
-      visitProject: '访问项目'
+      visitProject: '访问项目',
+      viewOnGitHub: '在 GitHub 上查看源码',
+      followOnX: '在 X (Twitter) 上关注我',
+      moreProjects: '查看更多项目',
+      toggleTheme: '切换主题'
     },
     projects: {
       deepseekChat: '生成 DeepSeek 风格的对话记录',
@@ -127,7 +135,11 @@ export const locales = {
       notReady: 'プレビューエリアは準備ができていません',
     },
     common: {
-      visitProject: 'プロジェクトを見る'
+      visitProject: 'プロジェクトを見る',
+      viewOnGitHub: 'GitHubでソースコードを見る',
+      followOnX: 'X (Twitter)でフォローする',
+      moreProjects: '他のプロジェクトを見る',
+      toggleTheme: 'テーマを切り替える'
     },
     projects: {
       deepseekChat: 'DeepSeek スタイルのチャット記録を生成',
