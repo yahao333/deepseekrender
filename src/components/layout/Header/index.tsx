@@ -11,7 +11,8 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 
 export const Header = () => {
   const params = useParams()
-  const lang = params.lang as string
+  const lang = (params?.lang ?? 'en') as keyof typeof locales // 添加类型断言
+  
   return (
     <TooltipProvider>
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
