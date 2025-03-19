@@ -26,6 +26,7 @@ export const locales = {
     nav: {
       home: 'Home',
       docs: 'Docs',
+      moreProjects: 'More Projects'
     },
     home: {
       features: 'Features',
@@ -46,6 +47,14 @@ export const locales = {
     },
     preview: {
       notReady: 'Preview area is not ready',
+    },
+    common: {
+      visitProject: 'Visit Project'
+    },
+    projects: {
+      deepseekChat: 'Generate DeepSeek-style Chat Records',
+      solidColor: 'Generate Solid Color Background',
+      todoLister: 'Simple and Elegant Todo List Manager'
     },    
   },
   zh: {
@@ -56,6 +65,7 @@ export const locales = {
     nav: {
       home: '首页',
       docs: '文档',
+      moreProjects: '更多项目'
     },
     home: {
       features: '特性',
@@ -76,7 +86,15 @@ export const locales = {
     },
     preview: {
       notReady: '预览区域未准备好',
-    },    
+    },
+    common: {
+      visitProject: '访问项目'
+    },
+    projects: {
+      deepseekChat: '生成 DeepSeek 风格的对话记录',
+      solidColor: '生成纯色背景',
+      todoLister: '简洁优雅的待办事项管理器'
+    },
   },
   ja: {
     app: {
@@ -86,6 +104,7 @@ export const locales = {
     nav: {
       home: 'ホーム',
       docs: 'ドキュメント',
+      moreProjects: 'その他のプロジェクト'
     },
     home: {
       features: '特徴',
@@ -106,6 +125,14 @@ export const locales = {
     },
     preview: {
       notReady: 'プレビューエリアは準備ができていません',
+    },
+    common: {
+      visitProject: 'プロジェクトを見る'
+    },
+    projects: {
+      deepseekChat: 'DeepSeek スタイルのチャット記録を生成',
+      solidColor: '単色背景を生成',
+      todoLister: 'シンプルでエレガントなTodoリスト管理ツール'
     },    
   },
-} 
+}
