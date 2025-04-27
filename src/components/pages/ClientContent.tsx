@@ -102,7 +102,7 @@ ${t.app.description}
                   overflow: 'auto',
                 }}
               >
-                <MarkdownRenderer content={content} />
+                <MarkdownRenderer content={content} showLineNumbers={showLineNumbers} />
               </div>
             </div>
           </div>
