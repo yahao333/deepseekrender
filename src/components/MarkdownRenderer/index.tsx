@@ -5,10 +5,11 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import type { CSSProperties } from 'react'
 
 interface MarkdownRendererProps {
   content: string
-  showLineNumbers?: boolean // 新增属性
+  showLineNumbers?: boolean
 }
 
 export const MarkdownRenderer = ({ content, showLineNumbers = true }: MarkdownRendererProps) => {
@@ -51,10 +52,11 @@ export const MarkdownRenderer = ({ content, showLineNumbers = true }: MarkdownRe
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
-          code({node, inline, className, children, ...props}) {
+          code({node, className, children, ...props}) {
             const match = /language-(\w+)/.exec(className || '')
-            return !inline && match ? (
+            return match ? (
               <SyntaxHighlighter
+                // @ts-expect-error - vscDarkPlus 类型与 style 属性期望的类型不匹配, 但实际运行时是正确的
                 style={vscDarkPlus}
                 language={match[1]}
                 PreTag="div"
@@ -63,7 +65,7 @@ export const MarkdownRenderer = ({ content, showLineNumbers = true }: MarkdownRe
                   padding: '1em',
                   backgroundColor: '#1e1e1e',
                 }}
-                showLineNumbers={showLineNumbers}  // 使用传入的属性
+                showLineNumbers={showLineNumbers}
                 wrapLines={true}
                 wrapLongLines={true}
                 {...props}
