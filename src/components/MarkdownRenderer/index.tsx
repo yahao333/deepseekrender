@@ -52,31 +52,48 @@ export const MarkdownRenderer = ({ content, showLineNumbers = true }: MarkdownRe
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
-          code({node, className, children, ...props}) {
+          code: ({ node, className, children, ...props }) => {
+            // 提取语言类型并添加错误处理
             const match = /language-(\w+)/.exec(className || '')
-            return match ? (
-              <SyntaxHighlighter
-                // @ts-expect-error - vscDarkPlus 类型与 style 属性期望的类型不匹配, 但实际运行时是正确的
-                style={vscDarkPlus}
-                language={match[1]}
-                PreTag="div"
-                customStyle={{
-                  margin: 0,
-                  padding: '1em',
-                  backgroundColor: '#1e1e1e',
-                }}
-                showLineNumbers={showLineNumbers}
-                wrapLines={true}
-                wrapLongLines={true}
-                {...props}
-              >
-                {String(children).replace(/\n$/, '')}
-              </SyntaxHighlighter>
-            ) : (
-              <code className={className} {...props}>
-                {children}
-              </code>
-            )
+            const language = match ? match[1] : ''
+            
+            // 记录代码块渲染信息
+            console.log(`Rendering code block with language: ${language || 'plain text'}`)
+            
+            try {
+              return match ? (
+                <SyntaxHighlighter
+                  // @ts-expect-error - vscDarkPlus 类型问题已知
+                  style={vscDarkPlus}
+                  language={language}
+                  PreTag="div"
+                  customStyle={{
+                    margin: 0,
+                    padding: '1em',
+                    backgroundColor: '#1e1e1e',
+                    borderRadius: '4px', // 添加圆角
+                  }}
+                  showLineNumbers={showLineNumbers}
+                  wrapLines={true}
+                  wrapLongLines={true}
+                  {...props}
+                >
+                  {String(children).replace(/\n$/, '')}
+                </SyntaxHighlighter>
+              ) : (
+                <code className={className} {...props}>
+                  {children}
+                </code>
+              )
+            } catch (error) {
+              console.error('Error rendering code block:', error)
+              // 降级渲染
+              return (
+                <code className={className} {...props}>
+                  {children}
+                </code>
+              )
+            }
           }
         }}       
       >
