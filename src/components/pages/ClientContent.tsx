@@ -35,6 +35,7 @@ ${t.app.description}
 
   // 新增控制：渲染区域宽高
   const [renderWidth, setRenderWidth] = useState(800)  
+  const [showLineNumbers, setShowLineNumbers] = useState(true) // 新增: 控制代码行号显示
 
   useEffect(() => {
     if (previewRef.current) {
@@ -167,7 +168,16 @@ ${t.app.description}
             className="ml-1 w-12"
           />
         </label>
+        <label>
+          {t.controls.showLineNumbers}:
+          <input
+            type="checkbox"
+            checked={showLineNumbers}
+            onChange={(e) => setShowLineNumbers(e.target.checked)}
+            className="ml-1"
+          />
+        </label>
       </div>
     </>
   )
-} 
+}

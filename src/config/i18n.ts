@@ -44,6 +44,7 @@ export const locales = {
       shadowSize: 'Shadow Size',
       borderRadius: 'Border Radius',
       renderWidth: 'Render Width',
+      showLineNumbers: 'Show Line Numbers',  // 显示行号开关的英文翻译
     },
     preview: {
       notReady: 'Preview area is not ready',
@@ -87,6 +88,7 @@ export const locales = {
       shadowSize: '阴影大小',
       borderRadius: '圆角大小',
       renderWidth: '渲染宽度',
+      showLineNumbers: '显示行号',  // 显示行号开关的中文翻译
     },
     preview: {
       notReady: '预览区域未准备好',
@@ -129,6 +131,7 @@ export const locales = {
       foregroundColor: '前景色',
       shadowSize: '影のサイズ',
       borderRadius: '角の半径',
+      showLineNumbers: '行番号を表示',
       renderWidth: 'レンダリング幅',
     },
     preview: {
