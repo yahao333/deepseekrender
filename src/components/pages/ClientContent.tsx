@@ -90,19 +90,26 @@ ${t.app.description}
               {/* 前景卡片层 */}
               <div
                 ref={previewRef}
-                className="relative z-10"
+                className="relative z-10 flex flex-col"
                 style={{
                   backgroundColor: bgColor,
                   borderRadius: `${borderRadius}px`,
                   boxShadow: `0 0 ${shadowSize}px rgba(0, 0, 0, 0.5)`,
                   margin: 20,   // 让卡片四周留出间距
-                  padding: 20,  // 卡片内边距
                   width: `calc(100% - 40px)`,  // 减去 margin
                   height: `calc(100% - 40px)`, // 减去 margin
-                  overflow: 'auto',
+                  overflow: 'hidden', // 确保圆角裁剪生效，且避免 html2canvas 阴影渲染问题
                 }}
               >
-                <MarkdownRenderer content={content} showLineNumbers={showLineNumbers} />
+                <div 
+                  style={{
+                    flex: 1,
+                    overflow: 'auto',
+                    padding: 20,  // 卡片内边距移到这里
+                  }}
+                >
+                  <MarkdownRenderer content={content} showLineNumbers={showLineNumbers} />
+                </div>
               </div>
             </div>
           </div>
