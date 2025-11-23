@@ -25,7 +25,7 @@ ${t.app.description}
   const [content, setContent] = useState(defaultMarkdown)
   const previewRef = useRef<HTMLDivElement>(null)
   const [isPreviewReady, setIsPreviewReady] = useState(false)
-  
+
   // 控制参数
   const [bgColor, setBgColor] = useState('#ffffff'); // 前景颜色
   const [startColor, setStartColor] = useState('#74d6c7'); // 渐变起始颜色
@@ -34,7 +34,7 @@ ${t.app.description}
   const [borderRadius, setBorderRadius] = useState(8); // 圆角大小
 
   // 新增控制：渲染区域宽高
-  const [renderWidth, setRenderWidth] = useState(800)  
+  const [renderWidth, setRenderWidth] = useState(800)
   const [showLineNumbers, setShowLineNumbers] = useState(true) // 新增: 控制代码行号显示
 
   useEffect(() => {
@@ -52,7 +52,7 @@ ${t.app.description}
           <p>{t.preview.notReady}</p> // 使用翻译
         )}
       </div>
-      
+
       {/* 使用 ResizablePanelGroup 保持左侧编辑区和右侧预览区可调整 */}
       <ResizablePanelGroup direction="horizontal" className="min-h-[600px] rounded-lg border">
         <ResizablePanel defaultSize={50}>
@@ -65,9 +65,9 @@ ${t.app.description}
             />
           </div>
         </ResizablePanel>
-        
+
         <ResizableHandle />
-        
+
         <ResizablePanel defaultSize={50}>
           {/* 让右侧可滚动，方便调试时不至于被截断 */}
           <div className="h-full overflow-auto flex justify-center items-center">
@@ -90,34 +90,27 @@ ${t.app.description}
               {/* 前景卡片层 */}
               <div
                 ref={previewRef}
-                className="relative z-10 flex flex-col"
+                className="relative z-10"
                 style={{
                   backgroundColor: bgColor,
                   borderRadius: `${borderRadius}px`,
                   boxShadow: `0 0 ${shadowSize}px rgba(0, 0, 0, 0.5)`,
                   margin: 20,   // 让卡片四周留出间距
+                  padding: 20,  // 卡片内边距
                   width: `calc(100% - 40px)`,  // 减去 margin
                   height: `calc(100% - 40px)`, // 减去 margin
-                  overflow: 'hidden', // 确保圆角裁剪生效，且避免 html2canvas 阴影渲染问题
+                  overflow: 'auto',
                 }}
               >
-                <div 
-                  style={{
-                    flex: 1,
-                    overflow: 'auto',
-                    padding: 20,  // 卡片内边距移到这里
-                  }}
-                >
-                  <MarkdownRenderer content={content} showLineNumbers={showLineNumbers} />
-                </div>
+                <MarkdownRenderer content={content} showLineNumbers={showLineNumbers} />
               </div>
             </div>
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>
 
-          {/* 控制参数区域 */}
-          <div className="mt-4 p-4 border rounded-lg shadow-md space-x-4">
+      {/* 控制参数区域 */}
+      <div className="mt-4 p-4 border rounded-lg shadow-md space-x-4">
         <label>
           {t.controls.renderWidth}:
           <input
