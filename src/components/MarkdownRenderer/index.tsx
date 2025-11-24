@@ -5,7 +5,6 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism'
-import type { CSSProperties } from 'react'
 
 interface MarkdownRendererProps {
   content: string
@@ -14,7 +13,7 @@ interface MarkdownRendererProps {
 
 export const MarkdownRenderer = ({ content, showLineNumbers = true }: MarkdownRendererProps) => {
   return (
-    <div className="prose prose-gray dark:prose-invert max-w-none markdown-custom-styles">
+    <div className="prose prose-gray max-w-none markdown-custom-styles">
       <style jsx global>{`
         /* 修复有序列表数字和文本的对齐问题 */
         .markdown-custom-styles ol {
@@ -52,7 +51,7 @@ export const MarkdownRenderer = ({ content, showLineNumbers = true }: MarkdownRe
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
-          code: ({ node, className, children, ...props }) => {
+          code: ({ className, children, ...props }) => {
             // 提取语言类型并添加错误处理
             const match = /language-(\w+)/.exec(className || '')
             const language = match ? match[1] : ''

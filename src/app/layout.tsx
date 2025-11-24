@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils"
 import { Header } from "@/components/layout/Header"
 import { ThemeProvider } from "@/components/providers/ThemeProvider"
 import Script from 'next/script'
+import { defaultLocale, languages } from '@/config/i18n'
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -35,26 +36,31 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const htmlLang = languages[defaultLocale as keyof typeof languages]?.code || defaultLocale
   return (
-    <html lang="zh-CN" suppressHydrationWarning>
+    <html lang={htmlLang} suppressHydrationWarning>
       <body className={cn(
         "min-h-screen bg-background font-sans antialiased",
         inter.className
       )}>
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-GKT18HKXT9"
-        />
-        <Script id="google-analytics-init">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-GKT18HKXT9');
-          `}
-        </Script>
+        {process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <Script
+              id="google-analytics"
+              strategy="afterInteractive"
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+            />
+            <Script id="google-analytics-init">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);} 
+                gtag('js', new Date());
+                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+              `}
+            </Script>
+          </>
+        )}
 
         <ThemeProvider
           attribute="class"

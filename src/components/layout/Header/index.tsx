@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { siteConfig } from '@/config/site'
-import { cn } from '@/lib/utils'
 import { locales } from '@/config/i18n'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
 import { LanguageToggle } from '@/components/ui/LanguageToggle'
@@ -18,7 +17,7 @@ export const Header = () => {
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-14 items-center">
           <div className="mr-4 flex">
-            <Link href="/" className="mr-6 flex items-center space-x-2">
+            <Link href={`/${lang}`} className="mr-6 flex items-center space-x-2">
               <span className="font-bold">{siteConfig.name}</span>
             </Link>
           </div>
@@ -52,7 +51,7 @@ export const Header = () => {
             {/* 更多项目按钮 */}
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link href="/more-projects" className="flex items-center p-2 rounded-md hover:bg-gray-200">
+                <Link href={`/${lang}/more-projects`} className="flex items-center p-2 rounded-md hover:bg-gray-200">
                   <span className="sr-only">{locales[lang].nav.moreProjects}</span>
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
